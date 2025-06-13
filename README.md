@@ -8,6 +8,7 @@ Este repositório contém três scripts para configurar, iniciar e integrar o [F
 1. [`setup_core.sh`](./setup_core.sh)
 2. [`setup_flexric.sh`](./setup_flexric.sh)
 3. [`integrar_oai_flexric.sh`](./integrar_oai_flexric.sh)
+4. [`deploy_flexric_oai_e2.sh`](./deploy_flexric_oai_e2.sh)
 
 ---
 
@@ -39,7 +40,21 @@ Este script compila e instala o FlexRIC com os service models.
 ---
 
 ## 🔗 3. `integrar_oai_flexric.sh`
+
+Este script realiza a integração entre o gNB do OAI e o `nearRT-RIC`.
+
+### Funções:
+- Clona o repositório OAI RAN com suporte ao E2 Agent.
+- Compila o gNB e o UE com o `--build-e2`.
+- Modifica o arquivo de configuração do gNB para ativar o E2 Agent.
+- Inicia:
+  - `nearRT-RIC`
+  - `gNB` com E2 Agent
+  - `UE` simulado
+  - xApps de monitoramento
+
 ---
+
 
 ## 🧰 4. `deploy_flexric_oai_e2.sh`
 
