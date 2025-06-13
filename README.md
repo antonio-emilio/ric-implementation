@@ -39,6 +39,30 @@ Este script compila e instala o FlexRIC com os service models.
 ---
 
 ## 🔗 3. `integrar_oai_flexric.sh`
+---
+
+## 🧰 4. `deploy_flexric_oai_e2.sh`
+
+Este script executa todo o processo completo de forma automatizada:
+
+### Funções:
+- Instala todas as dependências para OAI RAN e FlexRIC
+- Compila o `gNB` e o `nrUE` com suporte ao E2 Agent
+- Compila o `FlexRIC` com os mesmos parâmetros de E2AP/KPM
+- Inicia:
+  - `nearRT-RIC`
+  - `gNB` com `--rfsim`
+  - `nrUE` simulado com `rfsim`
+  - xApps de monitoramento (KPM, RC, MAC/RLC/PDCP/GTP)
+
+### Comando para executar:
+```bash
+chmod +x deploy_flexric_oai_e2.sh
+./deploy_flexric_oai_e2.sh
+```
+
+> Este script pressupõe que o Core 5G da OAI já está rodando conforme descrito no `setup_core.sh`.
+
 
 Este script realiza a integração entre o gNB do OAI e o `nearRT-RIC`.
 
