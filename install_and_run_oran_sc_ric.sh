@@ -82,6 +82,8 @@ if [ ! -d "srsRAN_4G" ]; then
   mkdir build && cd build
   CC=gcc-11 CXX=g++-11 cmake ..
   make
+  sudo make install
+  srsran_install_configs.sh user
   cd ../
 else
   echo "[!] srsRAN_4G já clonado."
