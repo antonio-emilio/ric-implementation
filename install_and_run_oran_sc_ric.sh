@@ -59,13 +59,20 @@ echo "[+] Começando a preparação do ambiente RAN (srsRAN + Open5GS)..."
 if [ ! -d "srsRAN_Project" ]; then
   git clone https://github.com/srsran/srsRAN_Project.git
   cd srsRAN_Project
-  mkdir build && cd build
-  cmake .. -DENABLE_ZMQ=ON
-  make -j$(nproc)
+  mkdir build
+  cd build
+  cmake ../ -DENABLE_EXPORT=ON -DENABLE_ZEROMQ=ON
+  make -j $(nproc)
   cd ../
 else
   echo "[!] srsRAN_Project já clonado."
 fi
+
+cd  ./srsRAN_Project/docker/
+docker compose up --build 5gc
+
+cd  ./srsRAN_Project/build/apps/gnb/
+sudo ./gnb -c ~/oran-sc-ric/e2-agents/srsRAN/gnb_zmq.yaml
 
 # Clonar srsRAN_4G (para srsUE com suporte a ZMQ)
 if [ ! -d "srsRAN_4G" ]; then
