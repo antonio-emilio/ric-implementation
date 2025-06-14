@@ -74,13 +74,14 @@ docker compose up --build 5gc
 cd  ./srsRAN_Project/build/apps/gnb/
 sudo ./gnb -c ~/oran-sc-ric/e2-agents/srsRAN/gnb_zmq.yaml
 
+sudo apt-get install -y g++-11 gcc-11
 # Clonar srsRAN_4G (para srsUE com suporte a ZMQ)
 if [ ! -d "srsRAN_4G" ]; then
   git clone https://github.com/srsran/srsRAN_4G.git
   cd srsRAN_4G
   mkdir build && cd build
-  cmake ../ -DENABLE_ZEROMQ=ON
-  make -j$(nproc)
+  CC=gcc-11 CXX=g++-11 cmake ..
+  make
   cd ../
 else
   echo "[!] srsRAN_4G já clonado."
