@@ -79,7 +79,7 @@ if [ ! -d "srsRAN_4G" ]; then
   git clone https://github.com/srsran/srsRAN_4G.git
   cd srsRAN_4G
   mkdir build && cd build
-  cmake .. -DENABLE_ZMQ=ON
+  cmake ../ -DENABLE_ZEROMQ=ON
   make -j$(nproc)
   cd ../
 else
