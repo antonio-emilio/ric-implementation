@@ -1,0 +1,40 @@
+# Build directories
+build/
+!build/.gitkeep
+
+# Compiled binaries
+*.o
+*.so
+*.a
+*.exe
+
+# Database files
+*.db
+*.sqlite
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Core dumps
+core
+core.*
+
+# Test outputs
+test_*.db
+/tmp/test_*
