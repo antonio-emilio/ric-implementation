@@ -1,18 +1,54 @@
 
-# FlexRIC + OAI CN5G Integration
+# RIC Implementation Repository
 
-Este repositório contém três scripts para configurar, iniciar e integrar o [FlexRIC](https://gitlab.eurecom.fr/mosaic5g/flexric) com o [OpenAirInterface 5G Core (OAI CN5G)](https://gitlab.eurecom.fr/oai/openairinterface5g).
+This repository contains scripts for deploying and integrating various RIC (Radio Interface Controller) implementations with existing CORE/gNB infrastructure.
 
-## 📜 Ordem de Execução dos Scripts
+## 🚀 Interactive Deployment Script (NEW)
+
+**[`deploy_ric_interactive.py`](./deploy_ric_interactive.py)** - Interactive Python script that guides users through RIC deployment configuration and execution.
+
+### Features:
+- **Interactive Configuration**: Asks users for all necessary deployment parameters
+- **Multiple RIC Support**: ORAN SC RIC, FlexRIC, OAI E2 Agent, and Custom implementations
+- **Existing Infrastructure**: Connects to existing CORE/gNB or deploys new ones
+- **Input Validation**: Validates IP addresses, ports, and directory paths
+- **Configuration Management**: Saves and loads deployment configurations
+- **Automated Script Generation**: Creates deployment scripts based on user input
+- **Real-time Execution**: Executes deployment with live output
+
+### Usage:
+```bash
+# Make script executable
+chmod +x deploy_ric_interactive.py
+
+# Show help
+python3 deploy_ric_interactive.py --help
+
+# Run interactive deployment
+python3 deploy_ric_interactive.py
+```
+
+### Supported RIC Types:
+1. **ORAN SC RIC** - Standard ORAN SC implementation with Docker support
+2. **FlexRIC** - FlexRIC with OAI integration and custom E2AP/KMP versions
+3. **OAI E2 Agent** - OAI with E2 Agent integration and RF simulator support
+4. **Custom RIC** - Template for custom RIC implementations
+
+---
+
+## 📜 Legacy Scripts (Individual Components)
 
 1. [`setup_core.sh`](./setup_core.sh)
 2. [`setup_flexric.sh`](./setup_flexric.sh)
 3. [`integrar_oai_flexric.sh`](./integrar_oai_flexric.sh)
 4. [`deploy_flexric_oai_e2.sh`](./deploy_flexric_oai_e2.sh)
+5. [`install_and_run_oran_sc_ric.sh`](./install_and_run_oran_sc_ric.sh)
 
 ---
 
-## 📦 1. `setup_core.sh`
+## 📦 Legacy Script Details
+
+### 1. `setup_core.sh`
 
 Este script prepara o ambiente para o Core 5G da OAI.
 
@@ -25,7 +61,7 @@ Este script prepara o ambiente para o Core 5G da OAI.
 
 ---
 
-## 🛠️ 2. `setup_flexric.sh`
+### 2. `setup_flexric.sh`
 
 Este script compila e instala o FlexRIC com os service models.
 
@@ -39,7 +75,7 @@ Este script compila e instala o FlexRIC com os service models.
 
 ---
 
-## 🔗 3. `integrar_oai_flexric.sh`
+### 3. `integrar_oai_flexric.sh`
 
 Este script realiza a integração entre o gNB do OAI e o `nearRT-RIC`.
 
@@ -56,7 +92,7 @@ Este script realiza a integração entre o gNB do OAI e o `nearRT-RIC`.
 ---
 
 
-## 🧰 4. `deploy_flexric_oai_e2.sh`
+### 4. `deploy_flexric_oai_e2.sh`
 
 Este script executa todo o processo completo de forma automatizada:
 
@@ -93,16 +129,46 @@ Este script realiza a integração entre o gNB do OAI e o `nearRT-RIC`.
 
 ---
 
-## 📌 Requisitos
+### 5. `install_and_run_oran_sc_ric.sh`
 
-- Ubuntu 22.04
-- Acesso `sudo`
-- Conexão à internet
-- Reinício da sessão após `setup_core.sh` (grupo docker)
+This script installs and runs the ORAN SC RIC implementation with srsRAN integration.
+
+### Functions:
+- Installs dependencies for srsRAN and srsUE
+- Clones and builds srsRAN Project and srsRAN 4G
+- Sets up ORAN SC RIC with Docker
+- Configures E2 Agent integration
+- Starts gNB and UE with ZMQ support
 
 ---
 
-## ✅ Verificação
+## 📖 Documentation
 
-- Para verificar o funcionamento, use `docker ps`, `htop` e logs de terminal.
-- Certifique-se de que o diretório `/usr/local/lib/flexric/` está presente.
+- **[Configuration Examples](./CONFIG_EXAMPLES.md)** - Example configurations for different deployment scenarios
+- **[Legacy Scripts Guide](./README.md#legacy-script-details)** - Details about individual component scripts
+
+---
+
+## 📌 Requirements
+
+## 📌 Requirements
+
+### For Interactive Deployment Script:
+- **Ubuntu 20.04 or 22.04**
+- **Python 3.8+**
+- **sudo privileges**
+- **Internet connection**
+
+### For Legacy Scripts:
+- Ubuntu 22.04
+- sudo access
+- Internet connection
+- Session restart after `setup_core.sh` (docker group)
+
+---
+
+## ✅ Verification
+
+- For interactive deployment: Follow the script prompts and check generated logs
+- For legacy scripts: Use `docker ps`, `htop` and terminal logs
+- Ensure `/usr/local/lib/flexric/` directory exists for FlexRIC deployments
