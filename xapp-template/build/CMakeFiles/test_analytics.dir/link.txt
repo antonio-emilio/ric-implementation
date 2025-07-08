@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -Wpedantic -O3 -DNDEBUG -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_analytics.dir/link.d CMakeFiles/test_analytics.dir/tests/test_analytics.c.o CMakeFiles/test_analytics.dir/src/analytics.c.o CMakeFiles/test_analytics.dir/src/utils.c.o -o test_analytics  -lsqlite3 -ljson-c -lm
