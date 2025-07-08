@@ -8,6 +8,8 @@
 #include <signal.h>
 #include <time.h>
 #include <pthread.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <json-c/json.h>
 #include <sqlite3.h>
 
@@ -49,10 +51,10 @@ typedef struct {
 } e2ap_init_params_t;
 
 // Simplified E2AP functions
-static inline int e2ap_init(e2ap_handle_t* handle, e2ap_init_params_t* params) { return 0; }
-static inline int e2ap_connect(e2ap_handle_t handle) { return 0; }
-static inline int e2ap_disconnect(e2ap_handle_t handle) { return 0; }
-static inline void e2ap_cleanup(e2ap_handle_t handle) { }
+static inline int e2ap_init(e2ap_handle_t* handle, e2ap_init_params_t* params) { (void)handle; (void)params; return 0; }
+static inline int e2ap_connect(e2ap_handle_t handle) { (void)handle; return 0; }
+static inline int e2ap_disconnect(e2ap_handle_t handle) { (void)handle; return 0; }
+static inline void e2ap_cleanup(e2ap_handle_t handle) { (void)handle; }
 #endif
 
 // Application includes

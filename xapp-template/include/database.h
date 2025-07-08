@@ -7,6 +7,7 @@
 #include <time.h>
 #include <sqlite3.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "analytics.h"
 

@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -Wpedantic -O3 -DNDEBUG -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_database.dir/link.d CMakeFiles/test_database.dir/tests/test_database.c.o CMakeFiles/test_database.dir/src/database.c.o CMakeFiles/test_database.dir/src/utils.c.o -o test_database  -lsqlite3 -ljson-c -lm

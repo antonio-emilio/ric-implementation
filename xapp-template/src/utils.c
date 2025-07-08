@@ -20,6 +20,8 @@
 #include <sys/sysinfo.h>
 #include <fcntl.h>
 #include <pthread.h>
+#include <ctype.h>
+#include <math.h>
 
 // Global logging context
 log_context_t g_log_ctx = {0};

@@ -13,6 +13,7 @@
 
 #include "analytics.h"
 #include "utils.h"
+#include <json-c/json.h>
 
 // String conversion functions
 const char* analytics_metric_type_to_string(metric_type_t type) {
@@ -341,7 +342,7 @@ trend_result_t analytics_calculate_trend(const metric_data_t* data, int count) {
     const double slope_threshold = 0.1;
     trend.is_increasing = (trend.slope > slope_threshold);
     trend.is_decreasing = (trend.slope < -slope_threshold);
-    trend.is_stable = (abs(trend.slope) <= slope_threshold);
+    trend.is_stable = (fabs(trend.slope) <= slope_threshold);
     
     return trend;
 }

@@ -7,6 +7,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 // Metric types
 typedef enum {

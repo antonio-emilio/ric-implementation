@@ -31,6 +31,7 @@ void signal_handler(int signal) {
 
 // Main function
 int main(int argc, char* argv[]) {
+    (void)argc; (void)argv;  // Suppress unused parameter warnings
     int ret = 0;
     const char* duration_env = getenv("XAPP_DURATION");
     
@@ -446,6 +447,7 @@ void print_statistics(const xapp_context_t* ctx) {
 
 // E2AP Connection callback
 void e2ap_connection_callback(e2ap_handle_t handle, uint32_t node_id, bool connected) {
+    (void)handle;  // Suppress unused parameter warning
     xapp_context_t* ctx = &g_xapp_ctx;
     
     if (connected) {
@@ -494,6 +496,7 @@ void e2ap_connection_callback(e2ap_handle_t handle, uint32_t node_id, bool conne
 
 // E2AP Subscription callback
 void e2ap_subscription_callback(e2ap_handle_t handle, uint32_t subscription_id, bool success) {
+    (void)handle;  // Suppress unused parameter warning
     xapp_context_t* ctx = &g_xapp_ctx;
     
     if (success) {
@@ -523,6 +526,7 @@ void e2ap_subscription_callback(e2ap_handle_t handle, uint32_t subscription_id, 
 
 // E2AP Indication callback
 void e2ap_indication_callback(e2ap_handle_t handle, uint32_t subscription_id, const e2ap_indication_t* indication) {
+    (void)handle;  // Suppress unused parameter warning
     xapp_context_t* ctx = &g_xapp_ctx;
     
     ctx->total_indications++;
@@ -556,6 +560,7 @@ void e2ap_indication_callback(e2ap_handle_t handle, uint32_t subscription_id, co
 
 // E2AP Control callback
 void e2ap_control_callback(e2ap_handle_t handle, uint32_t request_id, bool success) {
+    (void)handle;  // Suppress unused parameter warning
     xapp_context_t* ctx = &g_xapp_ctx;
     
     if (success) {

@@ -7,9 +7,11 @@
 #include <time.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <unistd.h>
 #include <sys/time.h>
 #include <errno.h>
+#include <json-c/json.h>
 
 // Log levels
 typedef enum {
