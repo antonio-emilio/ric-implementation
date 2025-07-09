@@ -161,7 +161,7 @@ IMSI_BASE=$IMSI_BASE
 DEBUG_LOGGING=$DEBUG_LOGGING
 ENABLE_XAPPS=$ENABLE_XAPPS
 ENABLE_MONITORING=$ENABLE_MONITORING
-DEPLOYMENT_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+DEPLOYMENT_DATE="$(date '+%Y-%m-%d %H:%M:%S')"
 EOF
     
     log "✅ Configuration saved to $CONFIGS_DIR/deployment_config.env"

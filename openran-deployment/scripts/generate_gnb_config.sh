@@ -14,18 +14,28 @@ source "$CONFIGS_DIR/deployment_config.env"
 # Generate srsRAN gNB configuration for ORAN SC
 generate_srsran_gnb_config() {
     cat > "$CONFIGS_DIR/gnb_config.yaml" << EOF
-# srsRAN gNB configuration for ORAN SC RIC
-# Generated automatically by OpenRAN deployment script
+# srsRAN gNB configuration for ORAN SC RIC (modern YAML schema)
 
-# AMF configuration
-amf:
-  addr: 127.0.0.1
-  port: 38412
-  bind_addr: 127.0.0.1
-  n2_bind_addr: 127.0.0.1
-  n3_bind_addr: 127.0.0.1
+cu_cp:
+  amf:
+    addr: 127.0.0.1
+    port: 38412
+    bind_addr: 127.0.0.1
+    supported_tracking_areas:
+      - tac: 7
+        plmn_list:
+          - plmn: "00101"
+            tai_slice_support_list:
+              - sst: 1
 
-# Cell configuration
+ru_sdr:
+  device_driver: uhd
+  device_args: type=b200
+  clock: external
+  srate: 23.04
+  tx_gain: 80
+  rx_gain: 40
+
 cell_cfg:
   dl_arfcn: 632628
   band: 78
@@ -34,47 +44,22 @@ cell_cfg:
   plmn: "00101"
   tac: 7
   pci: 1
-  prach_config_index: 159
+  prach:
+    prach_config_index: 159
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
 
-# E2 Agent configuration for RIC connection
-e2_agent:
-  enable: true
-  addr: $RIC_IP
-  port: $RIC_E2_PORT
-  bind_addr: $GNB_IP
-  sctp_rto_initial: 120
-  sctp_rto_min: 120
-  sctp_rto_max: 500
-  sctp_init_max_attempts: 3
-  sctp_max_init_timeo: 500
-  e2sm_kpm_enabled: true
-  e2sm_rc_enabled: true
-
-# RU configuration for simulation
-ru_cfg:
-  ru_type: zmq
-  zmq_cfg:
-    tx_port: tcp://*:2000
-    rx_port: tcp://localhost:2001
-
-# Log configuration
 log:
   filename: /tmp/gnb.log
   all_level: $( [[ "$DEBUG_LOGGING" == "y" ]] && echo "debug" || echo "info" )
-  
-# Scheduler configuration
-scheduler:
-  policy: time_rr
-  
-# QoS configuration
-qos:
-  five_qi_config:
-    - five_qi: 7
-      qos_characteristics:
-        resource_type: non_gbr
-        priority_level: 70
-        packet_delay_budget: 100
-        packet_error_rate: 1e-3
+
+pcap:
+  mac_enable: enable
+  mac_filename: /tmp/gnb_mac.pcap
+  ngap_enable: enable
+  ngap_filename: /tmp/gnb_ngap.pcap
 EOF
 }
 

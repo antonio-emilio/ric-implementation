@@ -59,9 +59,9 @@ echo ""
 echo -e "${YELLOW}📡 RIC Status${NC}"
 case $DEPLOYMENT_TYPE in
     "oran-sc"|"both")
-        check_service "O-RAN SC RIC E2 Manager" "docker ps | grep -q ric-e2mgr"
-        check_service "O-RAN SC RIC Database" "docker ps | grep -q ric-db"
-        check_service "O-RAN SC RIC Redis" "docker ps | grep -q ric-redis"
+        check_service "O-RAN SC RIC E2 Manager" "docker ps | grep -q ric_e2mgr"
+        check_service "O-RAN SC RIC Database" "docker ps | grep -q ric_dbaas"
+        # check_service "O-RAN SC RIC Redis" "docker ps | grep -q ric-redis"
         get_service_info "E2 Port" "nc -z $RIC_IP $RIC_E2_PORT && echo 'Open' || echo 'Closed'"
         ;;
     "flexric-oai"|"both")
