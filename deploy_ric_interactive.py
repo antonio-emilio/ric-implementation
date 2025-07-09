@@ -410,7 +410,7 @@ cd {self.config.install_dir}
 # Install dependencies
 echo "📦 Installing dependencies..."
 sudo apt-get update
-sudo apt-get install -y git docker.io docker-compose
+# sudo apt-get install -y git docker.io docker-compose
 sudo apt-get install -y cmake build-essential libboost-all-dev libmbedtls-dev libsctp-dev libfftw3-dev libzmq3-dev
 
 # Add user to docker group

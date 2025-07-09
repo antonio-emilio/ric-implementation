@@ -36,12 +36,12 @@ nof_carriers = 1
 bands = 78
 nof_carriers = 1
 
-[pcap]
+# [pcap]
 # Packet capture configuration
-enable = false
-mac_filename = /tmp/ue${i}.pcap
-nas_enable = false
-nas_filename = /tmp/ue${i}_nas.pcap
+# enable = false
+# mac_filename = /tmp/ue${i}.pcap
+# nas_enable = false
+# nas_filename = /tmp/ue${i}_nas.pcap
 
 [log]
 # Logging configuration

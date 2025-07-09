@@ -18,9 +18,9 @@ generate_srsran_gnb_config() {
 
 cu_cp:
   amf:
-    addr: 127.0.0.1
-    port: 38412
-    bind_addr: 127.0.0.1
+    addr: 10.53.1.2
+    port: 7777
+    bind_addr: 10.53.1.2
     supported_tracking_areas:
       - tac: 7
         plmn_list:
