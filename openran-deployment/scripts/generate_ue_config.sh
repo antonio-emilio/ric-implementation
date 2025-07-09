@@ -24,7 +24,7 @@ generate_srsran_ue_config() {
 [rf]
 # RF configuration for ZMQ
 device_name = zmq
-device_args = tx_port=tcp://*:$((2001 + i)),rx_port=tcp://localhost:$((2000 + i)),id=ue,base_srate=23.04e6
+device_args = tx_port=tcp://*:$((2000 + i)),rx_port=tcp://localhost:2000,id=ue,base_srate=23.04e6
 
 [rat.eutra]
 # LTE parameters
@@ -39,7 +39,7 @@ nof_carriers = 1
 [pcap]
 # Packet capture configuration
 enable = false
-filename = /tmp/ue${i}.pcap
+mac_filename = /tmp/ue${i}.pcap
 nas_enable = false
 nas_filename = /tmp/ue${i}_nas.pcap
 

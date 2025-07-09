@@ -29,9 +29,8 @@ cu_cp:
               - sst: 1
 
 ru_sdr:
-  device_driver: uhd
-  device_args: type=b200
-  clock: external
+  device_driver: zmq
+  device_args: tx_port=tcp://*:2000,rx_port=tcp://localhost:2001,id=gnb,base_srate=23.04e6
   srate: 23.04
   tx_gain: 80
   rx_gain: 40
