@@ -434,6 +434,26 @@ vim configs/deployment_config.env
 ./restart.sh
 ```
 
+### Q: I'm getting UHD radio plugin or pcap.filename errors?
+
+**A**: These issues have been fixed in the latest configuration scripts:
+
+1. **UHD Plugin Error** (`Failed to load RF plugin libsrsran_radio_uhd.so`): The configuration now uses ZMQ (software simulation) instead of UHD hardware drivers by default
+2. **PCAP Filename Error** (`unrecognised option 'pcap.filename'`): The UE configuration now uses the correct `mac_filename` format instead of deprecated `filename`
+
+To apply the fixes:
+```bash
+# Regenerate configurations
+./scripts/generate_gnb_config.sh
+./scripts/generate_ue_config.sh
+
+# Test the fixes
+./scripts/test_deployment_fixes.sh
+
+# Restart deployment
+./restart.sh
+```
+
 ### Q: Can I use real hardware?
 
 A: Yes, for real deployment:
