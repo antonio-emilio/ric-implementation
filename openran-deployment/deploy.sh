@@ -28,6 +28,10 @@ mkdir -p "$LOGS_DIR" "$CONFIGS_DIR" "$SCRIPTS_DIR"
 
 # Logging function
 log() {
+    # Ensure the log file exists
+    if [ ! -f "$LOGS_DIR/deployment.log" ]; then
+        touch "$LOGS_DIR/deployment.log"
+    fi
     echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')]${NC} $1" | tee -a "$LOGS_DIR/deployment.log"
 }
 

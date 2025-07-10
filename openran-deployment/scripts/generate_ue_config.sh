@@ -22,9 +22,8 @@ generate_srsran_ue_config() {
 # Generated automatically by OpenRAN deployment script
 
 [rf]
-# RF configuration for ZMQ
 device_name = zmq
-device_args = tx_port=tcp://*:$((2000 + i)),rx_port=tcp://localhost:2000,id=ue,base_srate=23.04e6
+device_args = fail_on_disconnect=true,id=gnb,base_srate=23.04e6,tx_port0=tcp://*:2000,rx_port0=tcp://localhost:2001,tx_port1=tcp://*:2002,rx_port1=tcp://localhost:2003
 
 [rat.eutra]
 # LTE parameters
@@ -256,5 +255,6 @@ main() {
 }
 
 # Execute main function
+main "$@"
 main "$@"
 main "$@"

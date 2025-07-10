@@ -38,7 +38,7 @@ cu_cp:
 
 ru_sdr:
   device_driver: zmq
-  device_args: tx_port=tcp://*:2000,rx_port=tcp://localhost:2001,id=gnb,base_srate=23.04e6
+  device_args: fail_on_disconnect=true,id=gnb,base_srate=23.04e6,tx_port0=tcp://*:2000,rx_port0=tcp://localhost:2001,tx_port1=tcp://*:2002,rx_port1=tcp://localhost:2003
   srate: 23.04
   tx_gain: 80
   rx_gain: 40
