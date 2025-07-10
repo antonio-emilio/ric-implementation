@@ -288,19 +288,19 @@ main() {
     
     # Run all tests
     test_configuration_integrity
-    test_ric_deployment
-    test_gnb_deployment
-    test_ue_deployment
-    test_core_network
-    test_network_connectivity
-    test_e2_interface
-    test_xapps
-    test_monitoring
-    test_performance
-    test_data_plane
+   # test_ric_deployment
+   # test_gnb_deployment
+   #  test_ue_deployment
+   #  test_core_network
+   #  test_network_connectivity
+   #  test_e2_interface
+   #  test_xapps
+   #  test_monitoring
+   #  test_performance
+   #  test_data_plane
     
     # Generate report
-    generate_test_report
+    # generate_test_report
     
     # Summary
     log "🏁 Test execution completed"

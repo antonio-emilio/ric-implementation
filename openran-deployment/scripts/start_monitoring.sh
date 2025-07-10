@@ -318,7 +318,7 @@ main() {
     log "📊 Starting monitoring services..."
     
     if [[ "$ENABLE_MONITORING" == "y" ]]; then
-        start_node_exporter
+        # start_node_exporter
         start_custom_collectors
         start_prometheus
         start_grafana

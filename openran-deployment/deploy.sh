@@ -418,7 +418,7 @@ main() {
 }
 
 # Trap to handle script interruption
-trap 'error "Deployment interrupted"; exit 1' INT TERM
+# trap 'error "Deployment interrupted"; exit 1' INT TERM
 
 # Execute main function
 main "$@"
