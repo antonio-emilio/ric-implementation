@@ -61,7 +61,6 @@ pin = 1234
 
 [rrc]
 # RRC configuration
-feature_group = 0xe6041000
 ue_category = 4
 release = 15
 mbms_service_id = -1
@@ -257,4 +256,5 @@ main() {
 }
 
 # Execute main function
+main "$@"
 main "$@"

@@ -11,6 +11,14 @@ CONFIGS_DIR="$SCRIPT_DIR/../configs"
 # Source deployment configuration
 source "$CONFIGS_DIR/deployment_config.env"
 
+# Set AMF_IP and AMF_PORT for srsRAN gNB
+AMF_IP="${AMF_IP:-127.0.0.1}"
+# srsRAN expects AMF_PORT in the range [20000-40000], so use a valid default (e.g., 38412)
+AMF_PORT="${AMF_PORT:-38412}"
+
+# Optionally force GNB_IP to 127.0.0.1 for local deployments
+GNB_IP="127.0.0.1"
+
 # Generate srsRAN gNB configuration for ORAN SC
 generate_srsran_gnb_config() {
     cat > "$CONFIGS_DIR/gnb_config.yaml" << EOF
@@ -18,9 +26,9 @@ generate_srsran_gnb_config() {
 
 cu_cp:
   amf:
-    addr: 10.53.1.2
-    port: 7777
-    bind_addr: 10.53.1.2
+    addr: $AMF_IP
+    port: $AMF_PORT
+    bind_addr: $GNB_IP
     supported_tracking_areas:
       - tac: 7
         plmn_list:
