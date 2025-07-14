@@ -64,7 +64,7 @@ cd "$BUILD_DIR"
 echo -e "${YELLOW}⚙️ Configuring build...${NC}"
 cmake .. -DCMAKE_BUILD_TYPE=Release \
          -DCMAKE_INSTALL_PREFIX=/usr/local \
-         -DFLEXRIC_PATH=/usr/local \
+         -DFLEXRIC_PATH=$HOME/CERISE/ric/flexric \
          -DBUILD_TESTS=ON
 
 # Build the project

@@ -13,34 +13,13 @@
 #include <json-c/json.h>
 #include <sqlite3.h>
 
-#ifndef SIMPLIFIED_BUILD
-// FlexRIC includes
-#include "flexric/src/lib/e2ap/e2ap_api.h"
-#include "flexric/src/lib/e2ap/e2ap_types.h"
-#include "flexric/src/lib/e2ap/e2ap_msg_enc.h"
-#include "flexric/src/lib/e2ap/e2ap_msg_dec.h"
-#include "flexric/src/lib/e2ap/e2ap_node.h"
-#include "flexric/src/lib/e2ap/e2ap_ric.h"
-#include "flexric/src/lib/e2ap/e2ap_subscription.h"
-#include "flexric/src/lib/e2ap/e2ap_indication.h"
-#include "flexric/src/lib/e2ap/e2ap_control.h"
-
-// Service Model includes
-#include "flexric/src/lib/sm/kpm_sm/kmp_sm_api.h"
-#include "flexric/src/lib/sm/rc_sm/rc_sm_api.h"
-#include "flexric/src/lib/sm/mac_sm/mac_sm_api.h"
-#include "flexric/src/lib/sm/rlc_sm/rlc_sm_api.h"
-#include "flexric/src/lib/sm/pdcp_sm/pdcp_sm_api.h"
-#include "flexric/src/lib/sm/gtp_sm/gtp_sm_api.h"
-#else
-// Simplified build - define necessary types
+// E2AP type definitions (always available)
 typedef void* e2ap_handle_t;
 typedef struct {
     uint32_t node_id;
     void* data;
     size_t data_size;
 } e2ap_indication_t;
-
 typedef struct {
     char* server_ip;
     int server_port;
@@ -50,7 +29,47 @@ typedef struct {
     void (*control_callback)(e2ap_handle_t, uint32_t, bool);
 } e2ap_init_params_t;
 
-// Simplified E2AP functions
+#ifndef SIMPLIFIED_BUILD
+// FlexRIC includes
+// Inclua apenas os headers que NÃO possuem static_assert(0!=0, ...) indicando "Unknown E2AP version"
+// Remova os includes problemáticos abaixo:
+
+//#include "e2ap_msg_dec_generic_wrapper.h"
+//#include "e2ap_msg_enc_generic_wrapper.h"
+//#include "e2ap_ap_wrapper.h"
+//#include "e2ap_global_node_id_wrapper.h"
+//#include "e2ap_node_comp_interface_type_wrapper.h"
+//#include "e2ap_node_component_config_add_wrapper.h"
+//#include "e2ap_plmn_wrapper.h"
+//#include "e2ap_ran_function_wrapper.h"
+//#include "e2ap_version.h"
+//#include "e2_node_connected_wrapper.h"
+//#include "e2_node_connected_xapp_wrapper.h"
+//#include "e2_setup_failure_wrapper.h"
+//#include "e2_setup_request_wrapper.h"
+//#include "e2_setup_response_wrapper.h"
+//#include "ric_control_ack_wrapper.h"
+//#include "ric_control_failure_wrapper.h"
+//#include "ric_control_request_wrapper.h"
+//#include "ric_gen_id_wrapper.h"
+//#include "ric_indication_wrapper.h"
+//#include "ric_subscription_delete_failure_wrapper.h"
+//#include "ric_subscription_delete_request_wrapper.h"
+//#include "ric_subscription_delete_response_wrapper.h"
+//#include "ric_subscription_failure_wrapper.h"
+//#include "ric_subscription_request_wrapper."#include "ric_subscription_response_wrapper.h"
+//#include "type_defs_wrapper.h"
+//#include "global_consts_wrapper.h"
+#else
+// Simplified build - define necessary types
+typedef void* e2ap_handle_t;
+typedef struct {
+    uint32_t node_id;
+    void* data;
+    size_t data_size;
+} e2ap_indication_t;
+
+// Provide stub implementations for linker in simplified build
 static inline int e2ap_init(e2ap_handle_t* handle, e2ap_init_params_t* params) { (void)handle; (void)params; return 0; }
 static inline int e2ap_connect(e2ap_handle_t handle) { (void)handle; return 0; }
 static inline int e2ap_disconnect(e2ap_handle_t handle) { (void)handle; return 0; }
